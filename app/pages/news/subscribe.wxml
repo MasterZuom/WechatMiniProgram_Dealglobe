@@ -1,0 +1,32 @@
+<!--pages/news/subscribe.wxml-->
+
+<view class="container">
+  <view id="subscribe_select" class="subscribe_block">
+    <view class="subscribe_title_row">
+      <view class="subscribe_title">感兴趣的行业</view>
+    </view>
+    <view class="subscribe_list" wx:if="{{formattedSubscribeData && formattedSubscribeData.industries.length > 0}}">
+      <button wx:for="{{formattedSubscribeData.industries}}" wx:key="{{index}}" data-type="industries" data-value="{{item.name}}" class="subscribe_item {{item.selected ? 'active' : ''}}" bindtap='handleClickChannelItem'><view class="subscribe_item_inner">{{item.name}}</view></button>
+    </view>
+    <view wx:else class="no_channel">无</view>
+  </view>
+  <view id="subscribe_select" class="subscribe_block">
+    <view class="subscribe_title_row">
+      <view class="subscribe_title">情报来源地</view>
+    </view>
+    <view class="subscribe_list" wx:if="{{formattedSubscribeData && formattedSubscribeData.intel_sources.length > 0}}">
+      <button wx:for="{{formattedSubscribeData.intel_sources}}" wx:key="{{index}}" data-type="intel_sources" data-value="{{item.name}}" class="subscribe_item {{item.selected ? 'active' : ''}}" bindtap='handleClickChannelItem'><view class="subscribe_item_inner">{{item.name}}</view></button>
+    </view>
+    <view wx:else class="no_channel">无</view>
+  </view>
+  <view id="subscribe_select" class="subscribe_block">
+    <view class="subscribe_title_row">
+      <view class="subscribe_title">情报类型</view>
+    </view>
+    <view class="subscribe_list" wx:if="{{formattedSubscribeData && formattedSubscribeData.intel_stages.length > 0}}">
+      <button wx:for="{{formattedSubscribeData.intel_stages}}" wx:key="{{index}}" data-type="intel_stages" data-value="{{item.name}}" class="subscribe_item {{item.selected ? 'active' : ''}}" bindtap='handleClickChannelItem'><view class="subscribe_item_inner">{{item.name}}</view></button>
+    </view>
+    <view wx:else class="no_channel">无</view>
+  </view>
+  <button class="btn_normal" hover-class="btn_hover" bindtap="handleClickSave">确定</button>
+</view>

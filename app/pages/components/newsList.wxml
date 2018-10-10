@@ -1,0 +1,25 @@
+<!--pages/components/newsList.wxml-->
+
+<!-- Filter Module  -->
+<wxs src="../../utils/util.wxs" module="filter" />
+
+<view class="contain">
+  <view class="news">
+    <view wx:for="{{listData}}" wx:key="{{index}}" >
+      <button class="news_item {{item.news_type['0']!=='新闻'&&item.news_type['0']!=='情报'&&item.news_type['0']!=='报告' ? 'big' : ''}}" hover-class="btn_hover" bindtap="newsClick" data-id="{{item.id}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        <view class="news_thumb">
+          <image src="{{item.image_large_banner}}" mode="aspectFill"></image>
+        </view>
+        <view class="news_info">
+          <view class="news_title">{{item.title_zh}}</view>
+          <view class="news_meta">
+            <view class="news_type">{{item.news_type[0]}}</view>
+            <view class="news_date">{{filter.showTimeStream(item.published_at)}}</view>
+          </view>
+        </view>
+      </button>
+    </view>
+  </view>
+  <text wx:if="{{isLoadingMore}}" class="footer_loading_more">加载更多...</text>
+  <text wx:if="{{isLoadingComplete}}" class="footer_loading_complete">{{isEmptyNewsArr ? '暂无数据' : '没有更多了'}}</text>
+</view>

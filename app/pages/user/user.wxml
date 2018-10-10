@@ -1,0 +1,20 @@
+<!--pages/user/user.wxml-->
+
+<view class="container">
+  <view id="user_block">
+    <!-- <image src="../assets/images/60_default_thumbnail.png" mode="aspectFill"></image> -->
+    <view id="user_head"><open-data type="userAvatarUrl"></open-data></view>
+    <view id="user_name">
+      <block wx:if="{{username}}">
+        <view>{{username}}</view>
+      </block>
+      <block wx:else>
+        <open-data type="userNickName"></open-data>
+      </block>
+    </view>
+  </view>
+  <scroll-view scroll-y id="user_menu">
+    <view class="user_menu_item" hover-class="btn_hover" data-type="news_subs" bindtap="handleClickUserMenuItem">新闻订阅设置</view>
+    <view class="user_menu_item" hover-class="btn_hover" data-type="new_fav" bindtap="handleClickUserMenuItem">收藏的新闻</view>
+  </scroll-view>
+</view>

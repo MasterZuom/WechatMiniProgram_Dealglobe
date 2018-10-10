@@ -1,0 +1,4 @@
+/* pages/news/myCollect.wxss */
+.collect_list{
+  margin-top: 5px;
+}

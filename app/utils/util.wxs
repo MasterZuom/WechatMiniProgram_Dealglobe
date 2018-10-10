@@ -1,0 +1,52 @@
+
+var sDate = function (date) {
+  date = getDate(date);
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [month, day].map(formatNumber).join('-');
+}
+
+var formatNumber = function (n) {
+  n = n.toString();
+  return n[1] ? n : '0' + n;
+}
+
+var showTimeStream = function (date) {
+  if (date) {
+    var publishDate = Date.parse(getDate(date));
+    var nowDate = Date.parse(getDate());
+    var intervalTime = nowDate - publishDate;
+    var minute = 60 * 1000;
+    var hour = 60 * minute;
+    if (intervalTime < 1 * minute) {
+      return "刚刚"
+    } else if (intervalTime < 60 * minute) {
+      var time = (intervalTime / minute).toFixed(0)
+      return time + "分钟之前"
+    } else if (intervalTime < 24 * hour) {
+      var time = (intervalTime / hour).toFixed(0)
+      return time + "小时之前"
+    } else if (intervalTime < 48 * hour) {
+      return "昨天"
+    } else {
+      var d = getDate(date);
+      return (parseInt(d.getMonth()) + 1) + '月' + d.getDate() + '日';
+    }
+  }
+  else {
+    return '';
+  }
+}
+
+var formatFileSize = function (size) {
+  return ((size / 1024 / 1024).toFixed(1) + 'M');
+}
+
+module.exports = {
+  showTimeStream: showTimeStream,
+  sDate: sDate,
+  formatFileSize: formatFileSize,
+}
+
+
+

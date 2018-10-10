@@ -1,0 +1,87 @@
+/* pages/news/list.wxss */
+
+#newsNavBar{
+  display: flex;
+  height: 36px;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  justify-content: center;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  z-index: 999;
+}
+
+#newsNavBarSearch{
+  padding-left: 4px;
+}
+
+.newsNavBarButton{
+  display: inline-block;
+  font-size: 0;
+  padding: 6px 8px;
+  background-color: transparent;
+  border: none;
+  margin-top: 2px;
+}
+
+.newsNavBarButton image{
+  width: 20px;
+  height: 20px;
+}
+
+.newsNavBarButton::after{
+  border: none;
+}
+
+#newsNavBarChannel{
+  flex: 1;
+  padding: 0 8px;
+  overflow: hidden;
+}
+
+#newsNavBarChannelList{
+  height: 36px;
+  line-height: 36px;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.newsNavBarChannelListItem{
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  margin-right: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.newsNavBarChannelListItem.active{
+  color: #1E96FF;
+  position: relative;
+  font-weight: bold;
+}
+
+.newsNavBarChannelListItem.active::after{
+  content: ' ';
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  background-color: #1E96FF;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  margin-left: -9px;
+}
+
+#newsNavBarOthers{
+  padding-right: 4px;
+}
+
+#newsNavBarCustomizeChannel{
+  margin-right: 6px;
+}
+
+.news_list{
+  margin-top: 36px;
+}

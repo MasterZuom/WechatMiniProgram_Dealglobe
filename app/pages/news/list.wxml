@@ -1,0 +1,30 @@
+<!--pages/news/list.wxml-->
+<view class="container">
+  <!-- nav bar begin -->
+  <view id="newsNavBar">
+    <view id="newsNavBarSearch">
+      <button class="newsNavBarButton" hover-class="btn_hover" bindtap="handleClickSearchButton">
+        <image src="../assets/images/20_search.png" mode="aspectFill"></image>
+      </button>
+    </view>
+    <view id="newsNavBarChannel">
+      <scroll-view scroll-x id="newsNavBarChannelList">
+        <view wx:for="{{channels}}" wx:key="{{index}}" wx:if="{{item.selected===true}}" class="newsNavBarChannelListItem {{item.value == activeChannel? 'active':''}}" bindtap="channelTapClick" data-value="{{item.value}}">{{item.name}}</view>
+      </scroll-view>
+    </view>
+    <view id="newsNavBarOthers">
+      <button class="newsNavBarButton" hover-class="btn_hover" id="newsNavBarCustomizeChannel" bindtap="handleClickCustomizeChannelButton">
+        <image src="../assets/images/20_bars.png" mode="aspectFill"></image>
+      </button>
+      <button class="newsNavBarButton" hover-class="btn_hover" id="newsNavBarUser" bindtap="handleClickUserButton" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        <image src="../assets/images/20_user.png" mode="aspectFill"></image>
+      </button>
+    </view>
+  </view>
+  <!-- nav bar end -->
+
+  <!-- news list begin -->
+  <newsList id="newsList" class="news_list" params="{{newsListParams}}">
+  </newsList>
+  <!-- news list end -->
+</view>

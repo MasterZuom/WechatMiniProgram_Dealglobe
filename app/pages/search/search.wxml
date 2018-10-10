@@ -1,0 +1,27 @@
+<!--pages/search/search.wxml-->
+
+<view class="container">
+  <view class="search-header">
+    <view class="input-wraper">
+      <image src="../assets/images/20_search.png" mode="aspectFill" class="search_icon"></image>
+      <input placeholder="输入关键词搜索" confirm-type="search" placeholder-style="color:#999" focus="{{searchFocus}}" class="input" bindconfirm="searchClick" bindinput="inputSearchText" bindfocus="inputGetFocus" value="{{inputText}}" maxlength="32">
+      </input>
+      <image wx:if="{{!isShowResult && inputText}}" src="../assets/images/20_clear_input.png" mode="aspectFill" class="delete_icon" bindtap="deleteClick"></image>
+    </view>
+    <view wx:if="{{isShowResult}}" class="count-wraper">
+      共找到<text>{{searchCount}}</text>个符合的结果
+    </view>
+  </view>
+  <view class="search_history" wx:if="{{!isShowResult}}">
+    <block wx:if="{{newsSearchHistoyTags.length > 0}}">
+      <text class="title">最近搜索</text>
+      <view class="tas_wraper">
+        <view wx:for="{{newsSearchHistoyTags}}" wx:key="{{index}}" class="tags"  bindtap="tagsClick" data-text="{{newsSearchHistoyTags[index]}}">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <newsList wx:if="{{isShowResult}}" id="newsList" class="search_list" params="{{newsListParams}}" bindmyevent="onMyEvent">
+  </newsList>
+</view>

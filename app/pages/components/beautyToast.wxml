@@ -1,0 +1,5 @@
+<view class="beauty_toast {{ visible ? 'show' : '' }}">
+  <view class="beauty_toast_inner">
+    {{ content }}
+  </view>
+</view>

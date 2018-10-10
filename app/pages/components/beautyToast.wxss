@@ -1,0 +1,28 @@
+.beauty_toast{
+  display: inline-block;
+  position: fixed;
+  left: 50%;
+  font-size: 0;
+  transform: translate(-50%, 0);
+  bottom: 40px;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1010;
+  opacity: 0.4;
+  transition: all .2s ease-in-out;
+  border-radius: 4px;
+}
+
+.beauty_toast.show{
+  bottom: 50px;
+  opacity: 1;
+}
+
+.beauty_toast_inner{
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+}
+
+.show .beauty_toast_inner{
+  padding: 8px 16px; 
+}

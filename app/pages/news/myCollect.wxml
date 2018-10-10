@@ -1,0 +1,5 @@
+<!--pages/news/myCollect.wxml-->
+<view class="container">
+  <newsList id="newsList" class="collect_list" params="{{newsListParams}}" firstPageUrl="{{firstPageUrl}}" nextPageUrl="{{firstPageUrl}}">
+  </newsList>
+</view>

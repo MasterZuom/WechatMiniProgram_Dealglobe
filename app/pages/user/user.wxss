@@ -1,0 +1,53 @@
+/* pages/user/user.wxss */
+
+#user_block{
+  padding: 0 16px 40px;
+}
+
+#user_head{
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  margin: 8px auto;
+  border-radius: 50%;
+  font-size: 0;
+}
+
+#user_head image{
+  width: 60px;
+  height: 60px;
+}
+
+#user_name{
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+#user_menu{
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.user_menu_item{
+  color: #333;
+  font-size: 14px;
+  height: 44px;
+  line-height: 44px;
+  padding-left: 4px;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+
+.user_menu_item::after{
+  content: ' ';
+  width: 36px;
+  height: 36px;
+  display: block;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAABGdBTUEAALGPC/xhBQAAA9lJREFUeAHtmU1oU0EQx5sPSqBFqShC2oJe9GAPaloSaEoTaCO1aREkB0FFpEXpwZPitTe96Nki9QP8QA/iV4uliGgapEmjSMFjwIOJHw0iCYaQmPifuE8WoaUteW83MAsvM7PZt2/nl9nZ3ZemJi5MgAkwASbABJgAE2ACTIAJMAEmwASYABNgAkyACTCB9RKwrbdhvdv19va6i8Xic+q3Wq2OJZPJd/V+Rj36s9ejk830AThDAHOALtw/193dvXcz/Zh9jzJAdrv9MZz7JBzcDjnf09PTabbDG+1fGaB4PJ51Op2DGPA3GjQiqRPXfF9f346NOmFme2U5yHAKU4um2SvYW0Vd0uVyBWOxWM5oo1IqiyDD6aWlpfcOh2PEZrMVRJ0H+elpIBBwGW1USuWAyHlMtyiiKAJIZbKhB/L5/ANAcpKtsmgBiABgmZ8BoFNQq2QD0iggTUMqTQPaACIoiUTiLiCdI50K4JzEynb1r6Xm06Hmsas/NZ1Oxzs6OsCmGhStfG63u5LJZN6sfpd532gHiFwFpNeAsg2qV7gebG9vX0F9QtiWCaXzey0vKfdget2GPCHaUW46jlx1b6376v2dVjlIdg65qNra2noa8pmopx/zFvZNh+V2ZuvaRpDhOO2HsJq9QCT1Ux2AFaCHEEkLRhszpfaAyHmv17ulXC7TbvuggPETm8t+7J8+CNs00RCAyHs6oxUKhQVEzx6yEUlfce3H1uAL2WYVbXPQ/w5Ho9HvgHPWqIe+E9ewYZslGwYQvWBDxExLID4D0BPJNkVtCEB+v78NB9g5ANlNFACKXpVQol4xhYrUqfaAQqFQC3LPLOB0iXHnAWhocXHxo+SHaarWgCKRSHM2m30E732CQBFvIo8gMVu2o9YW0OTkpD2VSt0BmBDBQdT8xtJ+DGxeCliWCC3PYuR5LpebgjCOGQRoHHDuW0JFeoiWEYQz2GWMcVwa53m8ebwh2Zap2gHCWetCpVK5KBG4hNXqimRbqmq1k/Z4PGPw/rpBANNqCpHzb3No1FsptYkgRM5RALkmOf8wHA5PSLYSVYsIQs4ZwLSaAYFmQWEOcgRTq6SEivRQ5YAwreitIS3dLTQuRNFbbAoHAOcX2aqL0imGyNkHILOAUIMDuYw/DYd1gUM/jrII8vl8u0qlUgxjcNcGYrOlEDl+wMmQrUtRFkF4AXYTEGpwIDOIpEHd4NCPpAwQoqWNBoDyA9ch7JJTNUuzD2WAwGEUB88zyDldiJxlzbjwcJgAE2ACTIAJMAEmwASYABNgAkyACTABJsAEmAATYAJMgAlYTuAP6I05Xk5kDI4AAAAASUVORK5CYII=) 0 0 no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 4px;
+  right: -4px;
+}

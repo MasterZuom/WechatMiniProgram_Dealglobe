@@ -1,0 +1,25 @@
+<!--pages/news/customizeChannel.wxml-->
+
+<view class="container">
+  <view id="channel_select" class="channel_block">
+    <view class="channel_title_row">
+      <view class="channel_title">已选频道</view>
+      <view id="channel_edit_btn" bindtap='handleClickChannelEdit' hover-class="btn_hover">{{ editing ? '确定' : '编辑' }}</view>
+    </view>
+    <view class="channel_list {{editing ? 'edit' : ''}}"  wx:if="{{channels && channels.length > 0}}">
+      <button wx:for="{{channels}}" wx:if="{{item.selected===true}}" wx:key="{{index}}" data-value="{{item.value}}" class="channel_item {{item.value==='subscribe' || item.value==='recommended' ? 'lock' : ''}} {{item.name.length>=4 ? 'small' : ''}}" bindtap='handleClickChannelItem'><view class="channel_item_inner">{{item.name}}</view></button>
+    </view>
+    <view wx:else class="no_channel">无</view>
+  </view>
+  <view id="channel_more" class="channel_block">
+    <view class="channel_title_row">
+      <view class="channel_title">更多频道</view>
+      <view class="channel_title_desc">点击添加频道</view>
+    </view>
+    <view class="channel_list" wx:if="{{channels && channels.length > 0}}">
+      <button wx:for="{{channels}}" wx:if="{{item.selected===false}}" wx:key="{{index}}" data-value="{{item.value}}" class="channel_item {{item.name.length>=4 ? 'small' : ''}}" bindtap='handleClickChannelItem'><view class="channel_item_inner">{{item.name}}</view></button>
+    </view>
+    <view wx:else class="no_channel">无</view>
+  </view>
+  <button class="btn_normal" hover-class="btn_hover" bindtap="handleClickSave">确定</button>
+</view>

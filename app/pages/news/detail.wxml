@@ -1,0 +1,126 @@
+<!--logs.wxml-->
+<view class="{{pageLock ? 'scroll-forbid' : ''}}">
+  <view class="news-wrap">
+    <!-- Filter Module  -->
+    <wxs src="../../utils/util.wxs" module="filter" />
+
+    <view class="news-title">
+      {{detail.meta_info.title}}
+    </view>
+    <view class="container news-date">
+      {{filter.showTimeStream(detail.meta_info.date)}}
+      <!-- {{shortday}} -->
+    </view>
+
+    <view class="container news-attachment" wx:if="{{detail.meta_info.attachment}}">
+      <view class="news-attachment-meta">
+        <view class="news-attachment-type">PDF</view>
+        <view class="news-attachment-info">
+          <view class="news-attachment-name">{{detail.meta_info.attachment.name}}</view>
+          <view class="news-attachment-size">{{filter.formatFileSize(detail.base_info.attachment.size)}}</view>
+        </view>
+      </view>
+      <button class="news-attachment-open" hover-class="btn_hover" data-url="{{detail.base_info.attachment.file_url}}" bindtap="handleClickAttachment">打开</button>
+    </view>
+
+    <view class="container news-content">
+      <import src="../../wxParse/wxParse.wxml"/>
+      <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+    </view>
+
+    <block wx:if="{{detail.base_info}}">
+      <view class='container news-tags'>
+        <view class="tag-label">标签：</view> 
+        <text class="tag-text" wx:for="{{tags}}" wx:key="{{index}}" data-val="{{item}}" bindtap="handleClickTag">{{item}}</text>
+      </view>
+
+      <view class='container news-content'>
+        <image src="../assets/images/merger_group_small_banner.jpg" mode="widthFix"></image>
+      </view>
+    
+      <view class='container news-next'>
+        <view class="next-title">下一篇新闻</view>
+        <view class='next-wrap'>
+          <view wx:for="{{detail.base_info.next_news}}" wx:key="{{index}}" data-nextid="{{item.id}}" bindtap='toNextNews' class="news_item" hover-class="btn_hover">
+            <view class="news_thumb">
+              <image src="{{item.cdn_image}}" mode="aspectFill"></image>
+            </view>
+            <view class="news_info">
+              <view class="news_title">{{item.title}}</view>
+              <view class="news_meta">
+                <view class="news_type">{{item.type[0]}}</view>
+                <view class="news_date">{{filter.showTimeStream(item.date)}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- <view class='next-item' data-nextid="{{item.id}}" bindtap='toNextNews' wx:for="{{detail.base_info.next_news}}" wx:key="{{index}}">
+            <view class="news_thumb">
+              <image src="{{item.cdn_image}}" mode="aspectFill"></image> 
+            </view>
+            <view class="news_info">
+              <view class="news_title">{{item.title}}</view>
+              <view class="news_meta">
+                <view class="news_date">{{filter.sDate(item.date)}}</view>
+                <view class="news_type">{{item.type[0]}}</view>
+              </view>
+            </view>
+          </view> -->
+        </view>
+      </view> 
+
+      <view class="container news-next" style="margin-bottom: 96rpx;">
+          <view class="next-title">最新评论</view>
+          <view class="next-wrap">
+            <block wx:if="{{comments}}">
+              <view class="comment-item {{item.is_liked ? 'like' : ''}}" wx:for="{{comments}}" wx:key="{{index}}">
+                <view class="comment-head"><image src="{{item.user.wechat_avatar ? item.user.wechat_avatar : (item.user.thumb_portrait ? item.user.thumb_portrait : '../assets/images/60_default_thumbnail.png')}}"></image></view>
+                <view class="comment-main">
+                  <view class="comment-meta">
+                    <view class="comment-info">
+                      <view class="comment-name">{{item.user.nickname ? item.user.nickname : '用户'}}</view>
+                      <view class="comment-date">{{filter.showTimeStream(item.created_at)}}</view>
+                    </view>
+                    <view class="comment-like-wrapper" bindtap='handleLike' data-likeindex="{{index}}" data-commentid="{{item.id}}" hover-class='btn_hover'>{{item.liked_count}}</view>
+                  </view>
+                  <view class="comment-content">{{item.content}}</view>
+                </view>
+              </view>
+              <view wx:if="{{isFetchingComments && !isLastComment}}" class="comments-status">评论加载中...</view>
+              <view wx:if="{{isLastComment}}" class="comments-status">没有更多评论了</view>
+            </block>
+            <block wx:else>
+              <view class="no-comment-block">
+                <image src="../assets/images/80_no_comment.png"></image>
+                暂无评论
+              </view>
+            </block>
+          </view>
+      </view>
+    </block>
+
+    <view class="container news-share">
+      <view id="comment-btn" bindtap='handleComment' hover-class='btn_hover'>写评论...</view>
+      <view class='btns'>
+        <button id="btnFav" bindtap='handleFav' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="{{isFollow ? 'active':''}}"  hover-class="btn_hover">
+          <!-- <icon class="iconfont icon-favorite"></icon> -->
+        </button>
+        <button id="btnShare" open-type='share' hover-class="btn_hover">
+          <!-- <icon class="iconfont icon-share"></icon> -->
+        </button>
+      </view>
+    </view>
+
+    <view animation="{{animationData}}" class="comment-view {{showComment ? 'show':'hidden'}}">
+      <view class="header">
+        <button class="cancel" bindtap="cancelClick">取消</button>
+        <text class="title">发表评论</text>
+        <button class="send" bindtap="sendClick" style="color:{{wordCount>0 ?'#1E96FF':'#999999'}}">发送</button>
+      </view>
+      <view class="text-input-wrapper">
+        <textarea class="text-input" value="{{inputCommentText}}" focus="{{textFocus}}" bindinput="inputCommentText" maxlength="200" adjust-position="false">
+        </textarea>
+        <text class="count">{{wordCount}}/200</text>
+      </view>
+    </view>
+  </view>
+</view>

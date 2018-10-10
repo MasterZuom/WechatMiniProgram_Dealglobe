@@ -1,0 +1,6 @@
+{
+  "onReachBottomDistance": 60,
+  "usingComponents": {
+    "newsList": "../components/newsList"
+  }
+}

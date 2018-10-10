@@ -1,0 +1,17 @@
+{
+  "pages":[
+    "pages/news/list",
+    "pages/news/detail",
+    "pages/news/customizeChannel",
+    "pages/news/subscribe",
+    "pages/news/myCollect",
+    "pages/search/search",
+    "pages/user/user"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "易界并购",
+    "navigationBarTextStyle":"black"
+  }
+}
